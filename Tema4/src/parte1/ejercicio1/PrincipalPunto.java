@@ -1,25 +1,16 @@
 package parte1.ejercicio1;
 
+/**
+ * Creamos 3 objetos Puntos con unas coordenadas concretas.
+ */
 public class PrincipalPunto {
 
 	public static void main(String[] args) {
 
 		// Creamos 3 objetos Puntos con sus respectivas cordenadas.
-		Punto punt1 = new Punto();
-		Punto punt2 = new Punto();
-		Punto punt3 = new Punto();
-
-		// Añadimos las cordenadas para el punt1.
-		punt1.x = 5;
-		punt1.y = 0;
-
-		// Añadimos las cordenadas para el punt2.
-		punt2.x = 10;
-		punt2.y = 10;
-
-		// Añadimos las cordenadas para el punt3.
-		punt3.x = -3;
-		punt3.y = 7;
+		Punto punt1 = new Punto(5, 6);
+		Punto punt2 = new Punto(10, 10);
+		Punto punt3 = new Punto(-3, 7);
 
 		// Imprimimos las cordenadas de los 3 puntos
 		System.out.println("Coordenadas");
