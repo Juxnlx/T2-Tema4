@@ -78,13 +78,22 @@ public class PrincipalPersona {
 		System.out.println("\nPersonas introducidas por el usuario");
 
 		// Imprimimos la primera persona
-		System.out.println("Persona 1: " + pers1.nombre + " " + pers1.apellido + " con dni " + pers1.dni
-				+ (pers1.edad < 18 ? " no es" : " es") + " mayor de edad.");
+		System.out.println("Persona 1: " + pers1.getNombre() + " " + pers1.getApellido() + " con dni " + pers1.getDni()
+				+ (pers1.getEdad() < 18 ? " no es" : " es") + " mayor de edad.");
 
 		// Imprimimos la segunda persona
-		System.out.println("Persona 2: " + pers2.nombre + " " + pers2.apellido + " con dni " + pers2.dni
-				+ (pers2.edad < 18 ? " no es" : " es") + " mayor de edad.");
-
+		System.out.println("\nPersona 2: " + pers2.getNombre() + " " + pers2.getApellido() + " con dni " + pers2.getDni()
+		+ (pers2.getEdad() < 18 ? " no es" : " es") + " mayor de edad.");
+		
+		//Modificamos el nombre, apellido y edad de la primera persona.
+		pers1.setNombre("Paquito");
+		pers1.setApellido("Peonzas");
+		pers1.setEdad(edad+1);
+		
+		//Imprimimos la primera persona modificada.
+		System.out.println("\nPersona 1 modificada: " + pers1.getNombre() + " " + pers1.getApellido() + " con dni " + pers1.getDni()
+		+ (pers1.getEdad() < 18 ? " no es" : " es") + " mayor de edad.");
+		
 		// Cierre de Scanner
 		sc.close();
 	}
