@@ -15,29 +15,29 @@ public class PrincipalArticulo {
 
 		// Imprimimos la información el articulo.
 		System.out.println("1º Articulo");
-		System.out.println(art1.nombre + " - Precio:" + art1.precio + " - IVA:" + art1.IVA + "% - PVP:"
-				+ (((art1.IVA * art1.precio) / 100) + art1.precio));
+		System.out.println(art1.getNombre() + " - Precio:" + art1.getPrecio() + " - IVA:" + Articulo.IVA + "% - PVP:"
+				+ (((Articulo.IVA * art1.getPrecio()) / 100) + art1.getPrecio()));
 
 		// Modificamos el precio del articulo.
-		art1.precio = 72;
+		art1.setPrecio(art1.getPrecio()-12);
 
 		// Volvemos a imprimir el articulo
 		System.out.println("Articulo con precio modificado -->");
-		System.out.println(art1.nombre + " - Precio:" + art1.precio + " - IVA:" + art1.IVA + "% - PVP:"
-				+ (((art1.IVA * art1.precio) / 100) + art1.precio));
+		System.out.println(art1.getNombre() + " - Precio:" + art1.getPrecio() + " - IVA:" + Articulo.IVA + "% - PVP:"
+				+ (((Articulo.IVA * art1.getPrecio()) / 100) + art1.getPrecio()));
 
 		// Imprimimos la información el articulo.
 		System.out.println("\n2º Articulo");
-		System.out.println(art2.nombre + " - Precio:" + art2.precio + " - IVA:" + art2.IVA + "% - PVP:"
-				+ (((art2.IVA * art1.precio) / 100) + art2.precio));
+		System.out.println(art2.getNombre() + " - Precio:" + art2.getPrecio() + " - IVA:" + Articulo.IVA + "% - PVP:"
+				+ (((Articulo.IVA * art2.getPrecio()) / 100) + art2.getPrecio()));
 
 		// Modificamos el precio del articulo.
-		art2.precio = 0;
+		art2.setPrecio(art2.getPrecio()-10);
 
 		// Volvemos a imprimir el articulo
 		System.out.println("Articulo con precio modificado -->");
-		System.out.println(art2.nombre + " - Precio:" + art2.precio + " - IVA:" + art2.IVA + "% - PVP:"
-				+ (((art2.IVA * art2.precio) / 100) + art2.precio));
+		System.out.println(art2.getNombre() + " - Precio:" + art2.getPrecio() + " - IVA:" + Articulo.IVA + "% - PVP:"
+				+ (((Articulo.IVA * art2.getPrecio()) / 100) + art2.getPrecio()));
 	}
 
 }
