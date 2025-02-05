@@ -14,27 +14,27 @@ public class PrincipalPunto {
 
 		// Imprimimos las cordenadas de los 3 puntos
 		System.out.println("Coordenadas");
-		System.out.println("Punto 1: (" + punt1.x + ", " + punt1.y + ")");
-		System.out.println("Punto 2: (" + punt2.x + ", " + punt2.y + ")");
-		System.out.println("Punto 3: (" + punt3.x + ", " + punt3.y + ")");
+		System.out.println("Punto 1: (" + punt1.getX() + ", " + punt1.getY() + ")");
+		System.out.println("Punto 2: (" + punt2.getX() + ", " + punt2.getY() + ")");
+		System.out.println("Punto 3: (" + punt3.getX() + ", " + punt3.getY() + ")");
 
 		// Modificamos las cordenadas del punt1.
-		punt1.x *= 2;
-		punt1.y += 5;
+		punt1.setX(punt1.getX()+5);
+		punt1.setY(punt1.getX()+5);
 
 		// Modificamos las cordenadas del punt2.
-		punt2.x -= 1;
-		punt2.y /= 2;
+		punt2.setX(punt2.getX()-1);
+		punt2.setY(punt2.getY()/2);
 
 		// Modificamos las cordenadas del punt3.
-		punt3.x += 2;
-		punt3.y %= 7;
+		punt3.setX(punt3.getX()+2);
+		punt3.setX(punt3.getY()-6);
 
 		// Imprimimos las cordenadas de los 3 puntos tras ser modificados.
 		System.out.println("\nCoordenadas modificadas");
-		System.out.println("Punto 1: (" + punt1.x + ", " + punt1.y + ")");
-		System.out.println("Punto 2: (" + punt2.x + ", " + punt2.y + ")");
-		System.out.println("Punto 3: (" + punt3.x + ", " + punt3.y + ")");
+		System.out.println("Punto 1: (" + punt1.getX() + ", " + punt1.getY() + ")");
+		System.out.println("Punto 2: (" + punt2.getX() + ", " + punt2.getY() + ")");
+		System.out.println("Punto 3: (" + punt3.getX() + ", " + punt3.getY() + ")");
 	}
 
 }
