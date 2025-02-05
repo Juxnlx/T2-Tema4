@@ -26,13 +26,13 @@ public class PrincipalRectangulo {
 		 */
 
 		// Perimetro del primer rectangulo
-		perimetro = ((rect1.x2 - rect1.x1) * 2) + ((rect1.y2 - rect1.y1) * 2);
+		perimetro = ((rect1.getX2() - rect1.getX1()) * 2) + ((rect1.getY2() - rect1.getY1()) * 2);
 		// Area del primer rectangulo.
-		area = (rect1.x1 - rect1.x2) * (rect1.y1 - rect1.y2);
+		area = (rect1.getX1() - rect1.getX2()) * (rect1.getY1() - rect1.getY2());
 
 		// Imprimimos las caracteristicas del primer rectangulo
 		System.out.println("1º Rectangulo -->");
-		System.out.println("Coordenadas: (" + rect1.x1 + ", " + rect1.y1 + ")(" + rect1.x2 + ", " + rect1.y2 + ")");
+		System.out.println("Coordenadas: (" + rect1.getX1() + ", " + rect1.getY1() + ")(" + rect1.getX2() + ", " + rect1.getY2() + ")");
 		System.out.println("Perimetro: " + perimetro);
 		System.out.println("Area: " + area);
 
@@ -41,13 +41,13 @@ public class PrincipalRectangulo {
 		 */
 
 		// Perimetro del segundo rectangulo
-		perimetro = ((rect2.x1 - rect2.x2) * 2) + ((rect2.y1 - rect2.y2) * 2);
+		perimetro = ((rect2.getX1() - rect2.getX2()) * 2) + ((rect2.getY1() - rect2.getY2()) * 2);
 		// Area del segundo rectangulo.
-		area = (rect2.x1 - rect2.x2) * (rect2.y1 - rect2.y2);
+		area = (rect2.getX1() - rect2.getX2()) * (rect2.getY1() - rect2.getY2());
 
 		// Imprimimos las caracteristicas del segundo rectangulo
 		System.out.println("\n2º Rectangulo -->");
-		System.out.println("Coordenadas: (" + rect2.x1 + ", " + rect2.y1 + ")(" + rect2.x2 + ", " + rect2.y2 + ")");
+		System.out.println("Coordenadas: (" + rect2.getX1() + ", " + rect2.getY1() + ")(" + rect2.getX2() + ", " + rect2.getY2() + ")");
 		System.out.println("Perimetro: " + perimetro);
 		System.out.println("Area: " + area);
 
@@ -56,19 +56,19 @@ public class PrincipalRectangulo {
 		 */
 
 		// Guardamos las coordenadas del primer rectangulo modificadas.
-		rect1.x1 += 5;
-		rect1.y1 += 8;
-		rect1.x2 -= 5;
-		rect1.y2 -= 3;
+		rect1.setX1(rect1.getX1()+5);
+		rect1.setY1(rect1.getY1()+8);
+		rect1.setX2(rect1.getX2()-5);
+		rect1.setY2(rect1.getY2()-3);
 
 		// Perimetro del primer rectangulo
-		perimetro = ((rect1.x1 - rect1.x2) * 2) + ((rect1.y1 - rect1.y2) * 2);
+		perimetro = ((rect1.getX1() - rect1.getX2()) * 2) + ((rect1.getY1() - rect1.getY2()) * 2);
 		// Area del primer rectangulo.
-		area = (rect1.x1 - rect1.x2) * (rect1.y1 - rect1.y2);
+		area = (rect1.getX1() - rect1.getX2()) * (rect1.getY1() - rect1.getY2());
 
 		// Imprimimos las caracteristicas del primer rectangulo
 		System.out.println("\n1º Rectangulo modificado -->");
-		System.out.println("Coordenadas: (" + rect1.x1 + ", " + rect1.y1 + ")(" + rect1.x2 + ", " + rect1.y2 + ")");
+		System.out.println("Coordenadas: (" + rect1.getX1() + ", " + rect1.getY1() + ")(" + rect1.getX2() + ", " + rect1.getY2() + ")");
 		System.out.println("Perimetro: " + perimetro);
 		System.out.println("Area: " + area);
 
@@ -77,19 +77,19 @@ public class PrincipalRectangulo {
 		 */
 
 		// Guardamos las respectivas coordenadas del segundo rectangulo.
-		rect2.x1 -= 1;
-		rect2.y1 /= 3;
-		rect2.x2 *= 5;
-		rect2.y2 += 5;
+		rect2.setX1(rect2.getX1()-1);
+		rect2.setY1(rect2.getY1()/3);
+		rect2.setX2(rect2.getX2()*5);
+		rect2.setY2(rect2.getY2()+5);
 
 		// Perimetro del segundo rectangulo
-		perimetro = ((rect2.x2 - rect2.x1) * 2) + ((rect2.y2 - rect2.y1) * 2);
+		perimetro = ((rect2.getX2() - rect2.getX1()) * 2) + ((rect2.getY2() - rect2.getY1()) * 2);
 		// Area del segundo rectangulo.
-		area = (rect2.x1 - rect2.x2) * (rect2.y1 - rect2.y2);
+		area = (rect2.getX1() - rect2.getX2()) * (rect2.getY1() - rect2.getY2());
 
 		// Imprimimos las caracteristicas del segundo rectangulo
 		System.out.println("\n2º Rectangulo modificado-->");
-		System.out.println("Coordenadas: (" + rect2.x1 + ", " + rect2.y1 + ")(" + rect2.x2 + ", " + rect2.y2 + ")");
+		System.out.println("Coordenadas: (" + rect2.getX1() + ", " + rect2.getY1() + ")(" + rect2.getX2() + ", " + rect2.getY2() + ")");
 		System.out.println("Perimetro: " + perimetro);
 		System.out.println("Area: " + area);
 	}
