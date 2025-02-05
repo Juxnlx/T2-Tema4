@@ -58,4 +58,38 @@ public class Punto {
 		this.y = y;
 	}
 
+	/**
+	 * Esta función se encarga de modicar la coordenada x e y con los valores
+	 * pasados por parametro.
+	 * 
+	 * @param x La coordenada x del punto.
+	 * @param y La coordenada y del punto.
+	 */
+	public void setXY(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	/**
+	 * Esta función se encarga de desplazar la coordenada x e y con las posiciones
+	 * que se le indiquen por parametro.
+	 * 
+	 * @param dx Las posiciones que debemos de desplazar coordenada x del punto.
+	 * @param dy Las posiciones que debemos de desplazar coordenada y del punto.
+	 */
+	public void desplaza(int dx, int dy) {
+		this.x += x;
+		this.y += y;
+	}
+
+	public double distancia(Punto p) {
+
+		// Creamos la variable distancia como double para almacenar la distancia entre
+		// puntos.
+		double distancia;
+
+		distancia = Math.sqrt(Math.pow((p.getX() - this.x), 2) + Math.pow((p.getY() - this.y), 2));
+
+		return distancia;
+	}
 }
