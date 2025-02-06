@@ -82,14 +82,37 @@ public class Punto {
 		this.y += y;
 	}
 
+	/**
+	 * Esta función se encarga de calcular la distancia mediante las coordenadas del
+	 * punto y otro objeto punto que pasamos como parametro.
+	 * 
+	 * @param p El objeto con las coordenadas que pasamos como parametro.
+	 * @return distancia. La distancia entre nuestro punto y el pasado como
+	 *         parametro.
+	 */
 	public double distancia(Punto p) {
 
 		// Creamos la variable distancia como double para almacenar la distancia entre
 		// puntos.
 		double distancia;
 
+		// Calculamos la función mediante una formula para calcular la distancia con las
+		// dos formulas.
 		distancia = Math.sqrt(Math.pow((p.getX() - this.x), 2) + Math.pow((p.getY() - this.y), 2));
 
+		// Devolvemos la distancia donde se almacena ese valor.
 		return distancia;
+	}
+
+	public String toString() {
+		// Creamos la variable coordenada como String para almacenar las coordenadas de
+		// ese punto.
+		String coordenada = "";
+		
+		//Almacenamos en la variable coordenada las coordenadas del punto.
+		coordenada = "(" + this.x + ", " + this.y + ")"; 
+		
+		//Devolvemos la cadena donde se almacena la coordenada del punto
+		return coordenada;
 	}
 }
