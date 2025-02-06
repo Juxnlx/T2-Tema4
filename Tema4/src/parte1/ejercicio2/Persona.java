@@ -124,4 +124,88 @@ public class Persona {
 		return dni;
 	}
 
+	/**
+	 * Esta función se encarga de comprobar si la edad de la persona es mayor o no
+	 * de edad.
+	 * 
+	 * @return mayorEdad. True si esa persona es mayor de edad. False si esa persona
+	 *         es menor de edad.
+	 */
+	public boolean esMayorEdad() {
+		// Creamos la variable mayorEdad como boolean para devolver true si es mayor de
+		// edad, false si no lo es.
+		boolean mayorEdad;
+
+		// Con el ternario comprobamos si la edad es mayor o menor de edad, true si es o
+		// no y false si no lo es. Almacenamos lo que nos devuelva en mayorEdad.
+		mayorEdad = this.edad >= 18 ? true : false;
+
+		// Devolvemos la variable donde se almacena true o false si es mayor o menor de
+		// edad esa persona.
+		return mayorEdad;
+	}
+
+	/**
+	 * Esta función se encarga de comprobar si una persona es jubilada comprobando
+	 * si una persona tiene mas de 65 años.
+	 * 
+	 * @return
+	 */
+	public boolean esJubilado() {
+		// Creamos la variable esJubilado como boolean para almacenar true o false.
+		boolean esJubilado;
+
+		// Con un ternario comprobamos si la persona es mayor de 65 años o no, true si
+		// tiene mas, false si no.
+		esJubilado = this.edad >= 65 ? true : false;
+
+		// Devolvemos la variable esJubilado donde se almacena true o false si es mayor
+		// o menor de 65 esa persona.
+		return esJubilado;
+	}
+
+	/**
+	 * Esta función se encarga de calcular la edad entre la edad de la persona
+	 * actual y edad de la persona pasada como parametro.
+	 * 
+	 * @param p El objeto de una nueva persona pasada como parametro.
+	 * @return diferencia. La diferencia entre una edad y la otra.
+	 */
+	public int diferenciaEdad(Persona p) {
+		// Creamos la variable diferencia como int para almacenar la diferencia de edad
+		// entre la persona y la pasada como parametro.
+		int diferencia;
+
+		// Comprobamos si la edad de la persona actual es mayor o igual a la pasada como
+		// parametro de otra persona.
+		if (this.edad >= p.getEdad()) {
+			// Almacenamos en diferencia, la diferencia entre la edad de la persona y de la
+			// persona pasada como parametro.
+			diferencia = this.edad - p.getEdad();
+
+			// Si no...
+		} else {
+			// Almacenamos en diferencia, la diferencia de edad entre la persona pasada como
+			// parametro y la actual.
+			diferencia = p.getEdad() - this.edad;
+		}
+
+		// Devolvemos la diferencia entre edad de las dos personas.
+		return diferencia;
+	}
+
+	public String toString() {
+		// Creamos la variable persona como String para almacenar los datos de la
+		// persona.
+		String persona;
+
+		// Almacenamos en persona todo lo que vamos a imprimir.
+		persona = "DNI: " + this.dni;
+		persona += "\nNombre: " + this.nombre;
+		persona += "\nApellidos: " + this.apellido;
+		persona += "\nEdad: " + this.edad;
+
+		// Devolvemos los datos de una persona almacenados en persona.
+		return persona;
+	}
 }

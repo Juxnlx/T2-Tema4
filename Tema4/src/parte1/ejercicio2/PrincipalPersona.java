@@ -27,6 +27,18 @@ public class PrincipalPersona {
 
 		// Creamos la variable edad como int para almacenar la edad de la persona.
 		int edad;
+		
+		//Creamos la variable esMayorEdad como boolean para almacenar si la persona es o no mayor de edad.
+		boolean mayorEdad;
+		
+		//Creamos la variable jubilado como boolean para almacenar si la persona tiene mas de 65 años o no.
+		boolean jubilado;
+		
+		//Creamos la variable edadDiferencia como int para almacenar la diferencia de dad entre una persona y otra.
+		int edadDiferencia;
+		
+		//Creamos la variable datosPersona como String para almacenar los datos de una persona.
+		String datosPersona;
 
 		// Creamos el Scanner para leer cada dato de las dos personas.
 		Scanner sc = new Scanner(System.in);
@@ -88,11 +100,18 @@ public class PrincipalPersona {
 		//Modificamos el nombre, apellido y edad de la primera persona.
 		pers1.setNombre("Paquito");
 		pers1.setApellido("Peonzas");
-		pers1.setEdad(edad+1);
+		pers1.setEdad(pers1.getEdad()+1);
+		
+		mayorEdad = pers1.esMayorEdad();
+		jubilado = pers1.esJubilado();
+		edadDiferencia = pers1.diferenciaEdad(pers2);
+		datosPersona = pers1.toString();
 		
 		//Imprimimos la primera persona modificada.
-		System.out.println("\nPersona 1 modificada: " + pers1.getNombre() + " " + pers1.getApellido() + " con dni " + pers1.getDni()
-		+ (pers1.getEdad() < 18 ? " no es" : " es") + " mayor de edad.");
+		System.out.println(datosPersona);
+		System.out.println("¿Es mayor de edad? --> " + mayorEdad);
+		System.out.println("¿Esta jubilado? --> " + jubilado);
+		System.out.println("Diferencia entre 1º persona y 2º persona --> " + edadDiferencia);
 		
 		// Cierre de Scanner
 		sc.close();
