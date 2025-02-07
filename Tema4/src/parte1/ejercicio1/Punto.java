@@ -104,6 +104,11 @@ public class Punto {
 		return distancia;
 	}
 
+	/**
+	 * Esta función se encarga de devolver las coordenadas de un punto en forma de cadena.
+	 * 
+	 * @return coordenada. Donde se almacena las coordenadas de un punto.
+	 */
 	public String toString() {
 		// Creamos la variable coordenada como String para almacenar las coordenadas de
 		// ese punto.
