@@ -105,4 +105,31 @@ public class Articulo {
 		}
 	}
 
+	/**
+	 * Esta función se encarga de calcular el PVP del articulo.
+	 * 
+	 * @return Devolvemos el PVP del articulo.
+	 */
+	public double getPVP() {
+		// Creamos la variable precioFinal como double para almacenar el valor del
+		// precio final.
+		double precioFinal;
+
+		// Calculamos el precio total (precio del producto + IVA).
+		precioFinal = (((IVA * this.precio) / 100) + this.precio);
+
+		// Devolvemos el precio mas IVA.
+		return precioFinal;
+	}
+
+	public double getPVPDescuento(int descuento) {
+		// Creamos la variable precioDescuento como double para almacenar el precio con
+		// el descuento ya aplicado.
+		double precioDescuento;
+		
+		precioDescuento = (this.precio - ((descuento * this.precio) / 100));
+		
+		//Devolvemos el precio con el descuento aplicado.
+		return precioDescuento;
+	}
 }
