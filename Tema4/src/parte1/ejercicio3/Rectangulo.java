@@ -124,4 +124,88 @@ public class Rectangulo {
 		this.y2 = y2;
 	}
 
+	/**
+	 * Esta función nos permite modificar las coordenadas x1 e y1 del primer punto.
+	 * 
+	 * @param x1 La coordenada del eje x.
+	 * @param y1 La coordenada del eje y.
+	 */
+	public void setX1Y1(int x1, int y1) {
+		this.x1 = x1;
+		this.y1 = y1;
+	}
+
+	/**
+	 * Esta función nos permite modificar las coordenadas x2 e y2 del segundo punto.
+	 * 
+	 * @param x2 La coordenada del eje x.
+	 * @param y2 La coordenada del eje y.
+	 */
+	public void setX2Y2(int x2, int y2) {
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+
+	/**
+	 * Esta función nos permite modificar todas las coordenadas del primer y segundo
+	 * punto.
+	 * 
+	 * @param x1 La coordenada del eje x del primer punto.
+	 * @param y1 La coordenada del eje y del primer punto.
+	 * @param x2 La coordenada del eje x del segundo punto.
+	 * @param y2 La coordenada del eje y del segundo punto.
+	 */
+	public void setAll(int x1, int y1, int x2, int y2) {
+			this.x1 = x1;
+			this.y1 = y1;
+			this.x2 = x2;
+			this.y2 = y2;
+	}
+
+	/**
+	 * Esta función se encarga de calcular el perimetro de un rectangulo y devolver
+	 * su valor.
+	 * 
+	 * @return El perimetro del rectangulo.
+	 */
+	public double getPerimetro() {
+		double perimetro;
+
+		perimetro = Math.abs((this.x2 - this.x1) * 2) + ((this.y2 - this.y1) * 2);
+
+		return perimetro;
+	}
+
+	/**
+	 * Esta función se encarga de calcular el area de un rectangulo y devolver la
+	 * solución de dicho calculo.
+	 * 
+	 * @return El area del perimetro.
+	 */
+	public double getArea() {
+		double area;
+
+		area = (this.x1 - this.x2) * (this.y1 - this.y2);
+
+		return area;
+	}
+
+	/**
+	 * Esta función se encarga imprimir por consola todas las caracteristicas del
+	 * rectangulo.
+	 * 
+	 * @return reslt. La cadena donde se almacena toda la información del
+	 *         rectangulo.
+	 */
+	public String toString() {
+		// Creamos la variable reslt como String para almacenar las coordenadas de cada
+		// rectangulo.
+		String reslt;
+
+		reslt = "Coordenadas: (" + this.x1 + ", " + this.y1 + ")(" + this.x2 + ", " + this.y2 + ")\n";
+		reslt += "Area: " + getArea();
+		reslt += "\nPerimetro: " + getPerimetro();
+
+		return reslt;
+	}
 }

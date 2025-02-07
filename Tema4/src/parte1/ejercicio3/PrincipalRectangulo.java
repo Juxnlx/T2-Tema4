@@ -49,28 +49,23 @@ public class PrincipalRectangulo {
 		System.out.println("\n2º Rectangulo -->");
 		System.out.println("Coordenadas: (" + rect2.getX1() + ", " + rect2.getY1() + ")(" + rect2.getX2() + ", " + rect2.getY2() + ")");
 		System.out.println("Perimetro: " + perimetro);
-		System.out.println("Area: " + area);
+		System.out.println("Area: " + area + "\n");
 
 		/*
 		 * PRIMER RECTANGULO MODIFICADO
 		 */
 
-		// Guardamos las coordenadas del primer rectangulo modificadas.
-		rect1.setX1(rect1.getX1()+5);
-		rect1.setY1(rect1.getY1()+8);
-		rect1.setX2(rect1.getX2()-5);
-		rect1.setY2(rect1.getY2()-3);
+		// Modificamos todas las coordenadas del rectangulo 1.
+		rect1.setAll(3, 2, 5, 8);
 
 		// Perimetro del primer rectangulo
-		perimetro = ((rect1.getX1() - rect1.getX2()) * 2) + ((rect1.getY1() - rect1.getY2()) * 2);
+		rect1.getPerimetro();
 		// Area del primer rectangulo.
-		area = (rect1.getX1() - rect1.getX2()) * (rect1.getY1() - rect1.getY2());
+		rect1.getArea();
 
 		// Imprimimos las caracteristicas del primer rectangulo
-		System.out.println("\n1º Rectangulo modificado -->");
-		System.out.println("Coordenadas: (" + rect1.getX1() + ", " + rect1.getY1() + ")(" + rect1.getX2() + ", " + rect1.getY2() + ")");
-		System.out.println("Perimetro: " + perimetro);
-		System.out.println("Area: " + area);
+		System.out.println("1º Rectangulo -->");
+		System.out.println(rect1);
 
 		/*
 		 * SEGUNDO RECTANGULO MODIFICADO
