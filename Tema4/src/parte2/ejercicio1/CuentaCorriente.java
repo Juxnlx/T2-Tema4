@@ -180,7 +180,7 @@ public class CuentaCorriente {
 
 		// Comprobamos si el saldo es mayor que el dinero que se desea retirar, si es
 		// así, se actualiza el saldo de la cuenta y se devuelve true.
-		if (this.saldo > dinero) {
+		if (this.saldo >= dinero) {
 			this.saldo -= dinero;
 			retirada = true;
 		}
