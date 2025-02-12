@@ -215,6 +215,11 @@ public class CuentaCorriente {
 		return ingreso;
 	}
 
+	/**
+	 * Esta función se encarga de almacenar en una cadena los datos de una cuenta.
+	 * 
+	 * @return Una cadena con toda la información de una cuenta.
+	 */
 	@Override
 	public String toString() {
 		// Creamos la variable datosCuenta como String para almacenar todos los datos de
@@ -230,17 +235,32 @@ public class CuentaCorriente {
 		// Devolvemos la cadena donde se encuentran todos los datos.
 		return datosCuenta;
 	}
-	
+
+	/**
+	 * Esta función se encarga de comprobar si el dni y el nombre de dos cuentas son
+	 * iguales.
+	 * 
+	 * @param Un objeto heredado de la clase object.
+	 * @return true si son iguales, false si no lo son.
+	 */
 	@Override
 	public boolean equals(Object obj) {
+		// Creamos la variable sonIguales como boolean para indicar cuando dos cuentas
+		// son iguales.
 		boolean sonIguales = false;
-		
+
+		// Hacemos un casteo del objeto pasado como parametro para que este objeto
+		// herede de CuentaCorriente y no de la clase object.
 		CuentaCorriente cuenta = (CuentaCorriente) obj;
-		
+
+		// Comprobamos si cada dni y nombre de las dos cuentas son iguales, si es así
+		// las ponemos a true.
 		if (this.dni.equals(cuenta.dni) && this.nombre.equals(cuenta.nombre)) {
 			sonIguales = true;
 		}
-		
+
+		// Devolvemos la variable sonIguales, que sera la que nos indica true o false
+		// dependiendo de si son iguales o no.
 		return sonIguales;
 	}
 }
