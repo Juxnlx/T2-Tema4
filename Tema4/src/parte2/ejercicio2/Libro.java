@@ -187,9 +187,11 @@ public class Libro {
 	}
 
 	/**
-	 * Esta función se encarga de modificar el atributo de libros prestados segun la cantida
-	 * @param librosPrestados
-	 * @return
+	 * Esta función se encarga de modificar el atributo de libros prestados segun la
+	 * cantida
+	 * 
+	 * @param librosPrestados La cantidad de libros que vamos a prestar.
+	 * @return true si se han podido prestar, false si no se han podido.
 	 */
 	public boolean prestamo(int librosPrestados) {
 		// Creamos la variable esPrestado como boolean para indicar true si se ha podido
@@ -199,14 +201,88 @@ public class Libro {
 		// Comprobamos si los libros prestados mas la cantidad que se van a prestar no
 		// sobrepasa los ejemplares existentes.
 		if (this.ejemplares >= this.prestados + librosPrestados) {
+			// Añadimos la cantidad de libros que se van a prestar a la variable prestados.
+			this.prestados += librosPrestados;
+			// Ponemos esPrestado a true.
 			esPrestado = true;
 		}
 
 		// Devolvemos esPrestado
 		return esPrestado;
 	}
-	
-	public boolean devolucion (int librosDevolver) {
-		//Creamos la variable esDevolucion
+
+	/**
+	 * Esta función se encarga de modificar la variable prestados actualizando la
+	 * cantidad segun los que se han devuelto.
+	 * 
+	 * @param librosDevolver La cantidad de libros que vamos a devolver.
+	 * @return true si se han podido devolver, false si no se han podido.
+	 */
+	public boolean devolucion(int librosDevolver) {
+		// Creamos la variable esDevolucion como boolean para indicar true si se ha
+		// podido devolver, false si no se puede.
+		boolean esDevuelto = false;
+
+		// Comprobamos si los libros que tenemos prestados son mas de los que vamos a
+		// devolver, porque en caso contrario no se podrian devolver mas libros de los
+		// que tienes prestados.
+		if (this.prestados >= librosDevolver) {
+			// Restamos la cantidad de libros prestados ya que han sido devueltos.
+			this.prestados -= librosDevolver;
+			// Indicamos que la devolución ha sido posible devolviendo la variable a true.
+			esDevuelto = true;
+		}
+
+		// Devolvemos esDevuelto
+		return esDevuelto;
+	}
+
+	/**
+	 * Esta función se encarga de imprimir una cadane con todos los datos de nuestro
+	 * objeto libro.
+	 * 
+	 * @return Devolvemos una cadena con todos los datos de un libro.
+	 */
+	@Override
+	public String toString() {
+		// Creamos la variable datosLibro como String para almacenar todos los datos y
+		// movimientos de un libro.
+		String datosLibro;
+
+		// Almacenamos en la cadena todos los datos de un libro.
+		datosLibro = "Titulo: " + this.titulo + "\n";
+		datosLibro += "Autor: " + this.autor + "\n";
+		datosLibro += "Ejemplares: " + this.ejemplares + "\n";
+		datosLibro += "Cant libros prestados: " + this.prestados + "\n";
+		datosLibro += "Genero: " + this.genero;
+
+		// Devolvemos la cadena donde se encuentran todos los datos.
+		return datosLibro;
+	}
+
+	/**
+	 * Esta función se encarga de comparar si dos objetos son iguales teniendo en
+	 * cuenta el titulo y el autor.
+	 * 
+	 * @param Objeto de heredado de la clase object.
+	 * @return true, si son iguales. False si no lo son.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		// Creamos la función sonIguales para comparar si los dos objetos son iguales o
+		// no.
+		boolean sonIguales = false;
+
+		// Concatenamos el objeto de object a uno de tipo Libro.
+		Libro libros = (Libro) obj;
+
+		// Comprobamos si los titulos y los autores de los dos libros son iguales, si es
+		// así devolvemos true.
+		if (this.titulo.equals(libros.titulo) && this.autor.equals(libros.autor)) {
+			sonIguales = true;
+		}
+
+		// Devolvemos la variable sonIguales que almacena true o false.
+		return sonIguales;
 	}
 }
