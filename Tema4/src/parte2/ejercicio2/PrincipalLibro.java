@@ -134,7 +134,7 @@ public class PrincipalLibro {
 			// Comprobamos que no sea alguna otra opción en ese caso, volvemos a preguntar.
 		} while (opcion != 1 && opcion != 2 && opcion != 3);
 
-		// Devolvemos la cuenta seleccionada.
+		// Devolvemos el libro seleccionado.
 		return libroTemporal;
 	}
 
