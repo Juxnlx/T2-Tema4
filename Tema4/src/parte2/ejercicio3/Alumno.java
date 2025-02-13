@@ -5,13 +5,13 @@ public class Alumno {
 	/**
 	 * Creamos el atributo nombre como String para almacenar el nombre del alumno.
 	 */
-	String nombre;
+	private String nombre;
 
 	/**
 	 * Creamos el atributo notaMedia como double para almacenar la nota media del
 	 * alumno.
 	 */
-	double notaMedia;
+	private double notaMedia;
 
 	/**
 	 * Constructor con el nombre y notaMedia pasado como parametro.
