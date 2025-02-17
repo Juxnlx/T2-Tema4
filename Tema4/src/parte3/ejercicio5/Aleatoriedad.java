@@ -3,14 +3,13 @@ package parte3.ejercicio5;
 import java.util.Random;
 
 public class Aleatoriedad {
+	
+//Declaramos el Random como static para usarlo en las demas funciones.
+static Random rand = new Random();
 
 	public void numerosAleatorios(int cantNumRandom) {
 		// Creamos la variable numAleatorio como int para almacenar el número aleatorio.
 		int numAleatorio;
-
-		// Creamos el objeto Random para generar números aleatorios comprendidos entre 0
-		// y 1.
-		Random rand = new Random();
 
 		// Creamos este bucle for para recorrer el bucle y generar un número aleatorio
 		// tantas veces como indiquemos por parametro.
@@ -26,10 +25,6 @@ public class Aleatoriedad {
 		// Creamos la variable numAleatorio como int para almacenar el número aleatorio.
 		int numAleatorio;
 
-		// Creamos el objeto Random para generar números aleatorios comprendidos entre 0
-		// y el valorMax.
-		Random rand = new Random();
-
 		// Creamos este bucle for para generar números entre 0 y el valorMax tantas
 		// veces como indiquemos por parametro.
 		for (int i = 0; i < cantNumRandom; i++) {
@@ -43,10 +38,6 @@ public class Aleatoriedad {
 	public void numerosAleatorios(int cantNumRandom, int valorMin, int valorMax) {
 		// Creamos la variable numAleatorio como int para almacenar el número aleatorio.
 		int numAleatorio;
-
-		// Creamos el objeto Random para generar números aleatorios comprendidos entre
-		// valorMin y el valorMax.
-		Random rand = new Random();
 
 		// Creamos este bucle for para generar números entre valorMin y el valorMax
 		// tantas veces como indiquemos por parametro.
