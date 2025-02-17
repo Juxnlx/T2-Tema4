@@ -75,7 +75,10 @@ public class FuncionesMatematicas {
 			// es igual a 1.
 		} else if (numero == 2) {
 			fibonacci = 1;
-			//CASO RECURSIVO - 
+			// CASO RECURSIVO - Para calcular el valor al que corresponde la posición
+			// llamamos a la función dos veces con el número de antes y de nuevo con dos
+			// número anteriores y lo sumamos. Porque para calcular el número de fibonacci
+			// debes de sumar los 2 números anteriores.s
 		} else {
 			fibonacci = serieFibonacci(numero - 1) + serieFibonacci(numero - 2);
 		}
