@@ -47,7 +47,7 @@ public class FuncionesMatematicas {
 			// número elevado a un exponente menor, para ello llamamos a la función de
 			// nuevo.
 		} else {
-			sol = a * Math.pow(a, n - 1);
+			sol = a * potencia(a, n - 1);
 		}
 
 		// Devolvemos la variable a, donde se almacena la potencia de a.
