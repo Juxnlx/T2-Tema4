@@ -40,16 +40,16 @@ public class PrincipalRandom {
 		valorMax = sc.nextInt();
 
 		System.out.println("\n-----RESULTADOS-----");
-		System.out.print("Secuencia de " + cantNum + " numeros entre (0 y 1) --> " );
+		System.out.print("Secuencia de " + cantNum + " numeros entre (0 y 1) --> ");
 		numerosRandom.numerosAleatorios(cantNum);
-		
+
 		System.out.print("\nSecuencia de " + cantNum + " numeros entre (0 y " + valorMax + ") --> ");
 		numerosRandom.numerosAleatorios(cantNum, valorMax);
-		
+
 		System.out.print("\nSecuencia de " + cantNum + " numeros entre (" + valorMin + " y " + valorMax + ") --> ");
 		numerosRandom.numerosAleatorios(cantNum, valorMin, valorMax);
-		
-		//Cierre de Scanner
+
+		// Cierre de Scanner
 		sc.close();
 	}
 
