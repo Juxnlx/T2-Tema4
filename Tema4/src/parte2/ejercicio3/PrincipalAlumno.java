@@ -10,15 +10,22 @@ public class PrincipalAlumno {
 
 	public static void main(String[] args) {
 
-		// Creamos la variable opcion como int para almacenar la opción seleccionada por
-		// el usuario para el menú.
-		int opcion;
-
 		// Nos creamos un objeto de la clase AlumnoCRUD para recoger la lista.
 		AlumnoCRUD listaAlum = new AlumnoCRUD();
 
 		// Nos creamos un objeto de la clase Alumno para alamcenar el nuevo Alumno.
 		Alumno alum;
+
+		// Creamos la variable opcion como int para almacenar la opción seleccionada por
+		// el usuario para el menú.
+		int opcion;
+
+		// Creamos la variable nombreAlumno como String para almacenar el nombre del
+		// alumno.
+		String nombreAlumno = "";
+
+		// Creamos la variable notaAlumno como double para alamcenar la nota del alumno.
+		double notaAlumno;
 
 		do {
 			// Mostramos el menú llamando a la función.
@@ -31,23 +38,64 @@ public class PrincipalAlumno {
 			// Segun la opción seleccionada del menú...
 			switch (opcion) {
 
+			// Listar todos los alumnos
 			case 1 -> {
 				// Llamamos a la función imprimirListaAlum del crud para mostrar todos los
 				// alumnos almacenados en la lista.
 				listaAlum.imprimirListaAlum();
 			}
 
+			// Añadir nuevos alumnos.
 			case 2 -> {
+				// En el objeto alumno almacenamos el nuevo objeto Alumno que nos devuelve la
+				// función nuevoAlumno.
 				alum = nuevoAlumno();
+				// En el objeto listaAlum llamamos a la función añadirAlumno para añadir este
+				// nuevo objeto a nuestra lista.
 				listaAlum.añadirAlumno(alum);
 			}
 
+			// Modificar nota alumno.
 			case 3 -> {
+				// Almacenamos en la variable nombre alumno el nombre que nos devuelve la
+				// función pedirNombre.
+				nombreAlumno = pedirNombre();
 
+				// En el objeto alum almacenamos el objeto alumno que nos devuelve la función
+				// buscar alumno, ese objeto se corresponde al nombre pasado como parametro.
+				alum = listaAlum.buscarAlumno(nombreAlumno);
+
+				// Comprobamos si ese alumno es distinto a null, si es así pedimos la nueva nota
+				// y se la actualizamos a ese objeto.
+				if (alum != null) {
+					notaAlumno = pedirNota();
+					alum.setNotaMedia(notaAlumno);
+					// Si no, imprimimos que el alumno no existe.
+				} else {
+					System.out.println("El alumno no existe");
+				}
 			}
 
+			// Eliminar alumno.
 			case 4 -> {
+				// Almacenamos en la variable nombre alumno el nombre que nos devuelve la
+				// función pedirNombre.
+				nombreAlumno = pedirNombre();
+				// En el objeto alum almacenamos el objeto alumno que nos devuelve la función
+				// buscar alumno, ese objeto se corresponde al nombre pasado como parametro.
+				alum = listaAlum.buscarAlumno(nombreAlumno);
 
+				// Comprobamos si la función eliminarAlumno nos ha devuelto true, en ese caso,
+				// se ha eliminado ese alumno.
+				if (listaAlum.eliminarAlumno(alum)) {
+					//Le indicamos al usuario que el alumno ha sido eliminado 
+					System.out.println("Se ha eliminado correctamente");
+					
+					//Si no...
+				} else {
+					//Le indicamos al usuario que el alumno no ha sido eliminado.
+					System.out.println("No se ha podido eliminar el alumno");
+				}
 			}
 
 			// Salimos...
@@ -113,6 +161,11 @@ public class PrincipalAlumno {
 
 	}
 
+	/**
+	 * Esta función se encarga de solicitar un nombre al usuario y de leerlo.
+	 * 
+	 * @return Devuelve el nombre introducido por el usuario.
+	 */
 	public static String pedirNombre() {
 		// Creamos la variable nombre como String para almacenar el nombre del alumno.
 		String nombre = "";
@@ -125,6 +178,11 @@ public class PrincipalAlumno {
 		return nombre;
 	}
 
+	/**
+	 * Esta función se encarga de solicitar una nota al usuario y de leerlo.
+	 * 
+	 * @return Devuelve la nota introducida por el usuario.
+	 */
 	public static double pedirNota() {
 		// Creamos la variable nota como double para almacenar la nota del alumno.
 		double nota;

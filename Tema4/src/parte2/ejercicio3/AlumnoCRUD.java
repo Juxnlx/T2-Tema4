@@ -44,15 +44,20 @@ public class AlumnoCRUD {
 	 * Esta función se encarga de recorrer la lista de alumno y devolvernos aquel
 	 * alumno con el mismo nombre que hemos pasado como parametro.
 	 * 
-	 * @param nombre
-	 * @return
+	 * @param nombre El nombre del alumno
+	 * @return El objeto alumno con ese nombre o null si no encuentra ningun alumno
+	 *         con ese nombre
 	 */
 	public Alumno buscarAlumno(String nombre) {
 		// Nos cremos un objeto alumno donde vamos a almacenar el objeto si es que lo
 		// encontramos en la lista.
 		Alumno AlumnoEncontrado = null;
 
+		// Recorremos la lista de todos los alumnos.
 		for (Alumno alum : listaAlumno) {
+			// Comprobamos si el nombre del objeto alumno que estamos recorriendo es igual
+			// al nombre pasada como parametro. Si es así, al objeto que hemos creado y
+			// vamos a devolver le igualamos ese objeto.
 			if (alum.getNombre().equals(nombre)) {
 				AlumnoEncontrado = alum;
 			}
@@ -62,4 +67,7 @@ public class AlumnoCRUD {
 		return AlumnoEncontrado;
 	}
 
+	public boolean eliminarAlumno(Alumno alum) {
+		return listaAlumno.remove(alum);
+	}
 }
