@@ -8,27 +8,17 @@ public class PrincipalAlumno {
 	// necesite.
 	static Scanner sc = new Scanner(System.in);
 
-	// Creamos los distintos objetos para la clase Libro,
-	private static Alumno alum1 = new Alumno("Juan Luis Barrionuevo Risquez", 7.32);
-	private static Alumno alum2 = new Alumno("Maria Rodriguez Rodriguez", 8.75);
-	private static Alumno alum3 = new Alumno("Pedro Barrionuevo Risquez", 6.50);
-
 	public static void main(String[] args) {
 
 		// Creamos la variable opcion como int para almacenar la opción seleccionada por
 		// el usuario para el menú.
 		int opcion;
 
-		// Creamos la variable nota como double para alamcenar la nota media de un
-		// alumno.
-		double nota;
+		// Nos creamos un objeto de la clase AlumnoCRUD para recoger la lista.
+		AlumnoCRUD listaAlum = new AlumnoCRUD();
 
-		// Creamos la variable nombre como String para almacenar el nombre del alumno.
-		String nombre;
-
-		// Creamos un objeto temporal donde guardar uno de los tres alumnos de forma
-		// temporal.
-		Alumno alumTemporal;
+		// Nos creamos un objeto de la clase Alumno para alamcenar el nuevo Alumno.
+		Alumno alum;
 
 		do {
 			// Mostramos el menú llamando a la función.
@@ -38,40 +28,30 @@ public class PrincipalAlumno {
 			// Limpiamos el buffer.
 			sc.nextLine();
 
-			// Asiganamos a nuestro objeto alumTemporal, el alumno que nos devuelve la
-			// función seleccionarAlum.
-			alumTemporal = seleccionarAlum();
-
 			// Segun la opción seleccionada del menú...
 			switch (opcion) {
-			// Modificamos el nombre del alumno.
+
 			case 1 -> {
-				// Le pedimos al usuario que introduzca el nuevo nombre del alumno y lo leemos.
-				System.out.println("¿Cual es el nuevo nombre del alumno?");
-				nombre = sc.nextLine();
-
-				// Con el metodo set del nombre modificamos el nombre del alumno con el del
-				// solicitado al usuario.
-				alumTemporal.setNombre(nombre);
+				// Llamamos a la función imprimirListaAlum del crud para mostrar todos los
+				// alumnos almacenados en la lista.
+				listaAlum.imprimirListaAlum();
 			}
 
-			// Modificamos la nota media del alumno.
 			case 2 -> {
-				System.out.println("¿Cual es la nueva nota del alumno?");
-				nota = sc.nextDouble();
-				sc.nextLine();
-
-				// Con el metodo set de la nota modificamos la nota media del alumno con del
-				// solicitado al usuario.
-				alumTemporal.setNotaMedia(nota);
+				alum = nuevoAlumno();
+				listaAlum.añadirAlumno(alum);
 			}
 
-			// Mostramos todos los datos del alumno.
 			case 3 -> {
-				System.out.println(alumTemporal.toString());
+
 			}
-			// Salimos...
+
 			case 4 -> {
+
+			}
+
+			// Salimos...
+			case 5 -> {
 				System.out.println("Saliendo del programa...");
 			}
 			// Indicamos que la opción introducida es incorrecta.
@@ -81,7 +61,7 @@ public class PrincipalAlumno {
 			}
 
 			// Comprobamos si la opción es distinto de 4.
-		} while (opcion != 4);
+		} while (opcion != 5);
 	}
 
 	/**
@@ -89,56 +69,74 @@ public class PrincipalAlumno {
 	 * hacer con los alumnos.
 	 */
 	public static void mostrarMenu() {
-		System.out.println("\n--- MENÚ ---");
-		System.out.println("1. Modificar nombre");
-		System.out.println("2. Modificar nota media");
-		System.out.println("3. Imprimir datos del alumno");
-		System.out.println("4. Salir");
+		System.out.println("\n--- ALUMNOS/AS ---");
+		System.out.println("1. Listado");
+		System.out.println("2. Nuevo Alumno");
+		System.out.println("3. Modificar");
+		System.out.println("4. Borrar");
+		System.out.println("5. Salir");
 		System.out.print("Elige una opción: ");
 	}
 
 	/**
-	 * Esta función se encarga de mostrar los alumnos que tenemos y le pregunta al
-	 * usuario cual quiere.
+	 * Esta función se encarga de crear un nuevo Alumno con los datos solicitados al
+	 * usuario.
 	 * 
-	 * @return El alumno seleccionado por el usuario.
+	 * @return El nuevo alumno.
 	 */
-	public static Alumno seleccionarAlum() {
+	public static Alumno nuevoAlumno() {
+		// Declaramos el objeto Alumno donde crearemos un nuevo Alumno con los datos que
+		// vamos a solicitar a continuación.
+		Alumno alumno;
 
-		// La opción que selecciona el usuario y que corresponde al alumno.
-		int opcion;
+		// Creamos la variable nombre como String para almacenar el nombre del alumno.
+		String nombre = "";
 
-		// Nos creamos un objeto temporal para almacenar el alumno.
-		Alumno alumTemporal = null;
+		// Creamos la variable nota como double para almacenar la nota del alumno.
+		double nota;
 
-		do {
-			System.out.println("\n--- Seleccione un alumno ---");
-			System.out.println("1. " + alum1.getNombre() + " - " + alum1.getNotaMedia());
-			System.out.println("2. " + alum2.getNombre() + " - " + alum2.getNotaMedia());
-			System.out.println("3. " + alum3.getNombre() + " - " + alum3.getNotaMedia());
+		// Le pedimos al usuario que introduzca el nombre del alumno y lo leemos
+		System.out.print("Introduce el nombre del nuevo alumno: ");
+		nombre = sc.nextLine();
 
-			// Preguntamos una opción y la leemos.
-			System.out.println("Que alumno eliges? 1, 2 o 3?");
-			opcion = sc.nextInt();
-			sc.nextLine();
+		// Le pedimos al usuario que introduzca la nota del alumno y la leemos.
+		System.out.print("Introduce la nota del nuevo alumno: ");
+		nota = sc.nextDouble();
+		// Limpiamos el buffer
+		sc.nextLine();
 
-			// Comprobamos si la opción es 1, 2 o 3 y le asignamos los respectivos alumnos.
-			switch (opcion) {
-			case 1 -> {
-				alumTemporal = alum1;
-			}
-			case 2 -> {
-				alumTemporal = alum2;
-			}
-			case 3 -> {
-				alumTemporal = alum3;
-			}
-			}
-			// Comprobamos que no sea alguna otra opción en ese caso, volvemos a preguntar.
-		} while (opcion != 1 && opcion != 2 && opcion != 3);
+		// Creamos el nuevo alumno.
+		alumno = new Alumno(nombre, nota);
 
-		// Devolvemos el alumno seleccionado.
-		return alumTemporal;
+		// Devolvemos el nuevo Alumno
+		return alumno;
+
+	}
+
+	public static String pedirNombre() {
+		// Creamos la variable nombre como String para almacenar el nombre del alumno.
+		String nombre = "";
+
+		// Le pedimos al usuario que introduzca el nombre del alumno y lo leemos
+		System.out.print("Introduce el nombre del nuevo alumno: ");
+		nombre = sc.nextLine();
+
+		// Devolvemos el nombre del alumno que acabamos de leer.
+		return nombre;
+	}
+
+	public static double pedirNota() {
+		// Creamos la variable nota como double para almacenar la nota del alumno.
+		double nota;
+
+		// Le pedimos al usuario que introduzca la nota del alumno y la leemos.
+		System.out.print("Introduce la nota del nuevo alumno: ");
+		nota = sc.nextDouble();
+		// Limpiamos el buffer
+		sc.nextLine();
+
+		// Devolvemos la nota del alumno que acabamos de leer.
+		return nota;
 	}
 
 }
