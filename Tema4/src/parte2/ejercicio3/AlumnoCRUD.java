@@ -67,6 +67,12 @@ public class AlumnoCRUD {
 		return AlumnoEncontrado;
 	}
 
+	/**
+	 * Esta función se encarga de eliminar de la lista un objeto.
+	 * 
+	 * @param alum El objeto alumno que queremos eliminar.
+	 * @return true, si se ha eliminado. False, si no se ha eliminado.
+	 */
 	public boolean eliminarAlumno(Alumno alum) {
 		return listaAlumno.remove(alum);
 	}

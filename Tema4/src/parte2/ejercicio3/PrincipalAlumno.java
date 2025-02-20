@@ -50,9 +50,11 @@ public class PrincipalAlumno {
 				// En el objeto alumno almacenamos el nuevo objeto Alumno que nos devuelve la
 				// función nuevoAlumno.
 				alum = nuevoAlumno();
-				// En el objeto listaAlum llamamos a la función añadirAlumno para añadir este
-				// nuevo objeto a nuestra lista.
-				listaAlum.añadirAlumno(alum);
+				if (listaAlum.añadirAlumno(alum)) {
+					System.out.println("¡ENHORABUENA! El alumno ha sido añadido.");
+				} else {
+					System.out.println("¡LO SIENTO! El alumno no se ha añadido.");
+				}
 			}
 
 			// Modificar nota alumno.
@@ -88,12 +90,12 @@ public class PrincipalAlumno {
 				// Comprobamos si la función eliminarAlumno nos ha devuelto true, en ese caso,
 				// se ha eliminado ese alumno.
 				if (listaAlum.eliminarAlumno(alum)) {
-					//Le indicamos al usuario que el alumno ha sido eliminado 
+					// Le indicamos al usuario que el alumno ha sido eliminado
 					System.out.println("Se ha eliminado correctamente");
-					
-					//Si no...
+
+					// Si no...
 				} else {
-					//Le indicamos al usuario que el alumno no ha sido eliminado.
+					// Le indicamos al usuario que el alumno no ha sido eliminado.
 					System.out.println("No se ha podido eliminar el alumno");
 				}
 			}
