@@ -81,8 +81,8 @@ public class Pizza {
 	 * 
 	 * @param estado El estado en el que se encuentra la pizza.
 	 */
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setEstado(String estado) {
+		compruebaEstado(estado.toUpperCase());
 	}
 
 	/**
@@ -138,6 +138,18 @@ public class Pizza {
 			this.tipo = Tipo.valueOf(tipo);
 		}
 
+		}
+	}
+
+	/**
+	 * Esta función se encarga de comprobar si el estado introducido es alguno de
+	 * los que aparece en el enum
+	 * 
+	 * @param estado El estado pasado como parametro.
+	 */
+	private void compruebaEstado(String estado) {
+		switch (estado) {
+		case "PEDIDA", "SERVIDA" -> this.estado = Estado.valueOf(estado);
 		}
 	}
 
