@@ -22,8 +22,7 @@ public class PrincipalArticulo {
 		Articulo articulo;
 
 		// Creamos la variable opcion como char para almacenar la opción seleccionada
-		// por
-		// el usuario para el menú.
+		// por el usuario para el menú.
 		char opcion;
 
 		// Creamos la variable nombreArticulo como String para almacenar el nombre
