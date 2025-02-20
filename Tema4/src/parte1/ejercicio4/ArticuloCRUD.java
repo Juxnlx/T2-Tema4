@@ -1,11 +1,12 @@
 package parte1.ejercicio4;
 
+import java.util.HashSet;
 import java.util.TreeSet;
 
 public class ArticuloCRUD {
 
 	// Creamos un conjunto TreeSet para almacenar articulos de forma ordenada.
-	private TreeSet<Articulo> listaArticulos = new TreeSet<Articulo>();
+	private HashSet<Articulo> listaArticulos = new HashSet<Articulo>();
 
 	/**
 	 * Esta función se encarga de recorrer nuestro conjunto con todos los articulos
