@@ -21,9 +21,10 @@ public class PrincipalArticulo {
 		// temporal.
 		Articulo articulo;
 
-		// Creamos la variable opcion como int para almacenar la opción seleccionada por
+		// Creamos la variable opcion como char para almacenar la opción seleccionada
+		// por
 		// el usuario para el menú.
-		int opcion;
+		char opcion;
 
 		// Creamos la variable nombreArticulo como String para almacenar el nombre
 		// introducido por el usuario de forma temporal, en las funciones que se
@@ -34,39 +35,45 @@ public class PrincipalArticulo {
 		// introducido por el usurio.
 		double precioArticulo;
 
+		// Creamos la variable stock como int para almacenar la cantidad de producto a
+		// incrementar o decrementar.
+		int stock;
+
 		do {
 			// Mostramos el menú llamando a la función.
 			mostrarMenu();
 			// Leemos la opción seleccionada por el usuario.
-			opcion = sc.nextInt();
-			// Limpiamos el buffer.
-			sc.nextLine();
+			opcion = sc.nextLine().toLowerCase().charAt(0);
 
 			// Segun la opción seleccionada del menú...
 			switch (opcion) {
 
 			// Listar articulos...
-			case 1 -> {
+			case 'a' -> {
 				// Llamamos a la función listarArticulos para imprimir todos los articulos
 				// disponibles hasta el momento.
 				listaArtic.listarArticulos();
 			}
 
-			// Crear nuevo articulo... /*NO FUNCIONA*/
-			case 2 -> {
+			// Crear nuevo articulo...
+			case 'b' -> {
 				// Almacenamos en el objeto articulo el objeto que nos devuelve la función
 				// altaArticulo.
 				articulo = altaArticulo();
 
+				// Comprobamos si el objeto articulo se ha añadido al conjunto correctamente, si
+				// es así lo comunicamos.
 				if (listaArtic.alta(articulo)) {
 					System.out.println("¡ENHORABUENA! El articulo se ha añadido correctamente.");
+
+					// Si no, indicamos que no se ha podido añadir.
 				} else {
 					System.out.println("¡LO SIENTO! El articulo no se ha añadido.");
 				}
 			}
 
 			// Eliminar nuevo articulo...
-			case 3 -> {
+			case 'c' -> {
 				// Almacenamos en la variable nombreArticulo el nombre que nos devuelve la
 				// función pedirNombre.
 				nombreArticulo = pedirNombre();
@@ -89,7 +96,7 @@ public class PrincipalArticulo {
 			}
 
 			// Modificación articulo...
-			case 4 -> {
+			case 'd' -> {
 				// Almacenamos en la variable nombreArticulo el nombre que nos devuelve la
 				// función pedirNombre.
 				nombreArticulo = pedirNombre();
@@ -112,17 +119,66 @@ public class PrincipalArticulo {
 			}
 
 			// Incrementar el stock...
-			case 5 -> {
+			case 'e' -> {
+				// Almacenamos en la variable nombreArticulo el nombre que nos devuelve la
+				// función pedirNombre.
+				nombreArticulo = pedirNombre();
+				// En el objeto articulo almacenamos el objeto articulo que nos devuelve la
+				// función buscarArticulo, ese objeto se corresponde al nombre pasado como
+				// parametro.
+				articulo = listaArtic.buscarArticulo(nombreArticulo);
 
+				// Comprobamos si ese articulo es distinto a null, si es así pedimos la cantidad
+				// a añadir al stock del producto y se lo actualizamos a ese objeto.
+				if (articulo != null) {
+					// Almacenamos en la variable stock la cantidad de articulos a añadir de un
+					// articulo.
+					stock = pedirStock();
+					// Modificamos de ese articulo el stock que se acaba de pedir con la función
+					// almacenar que es quien actualiza el stock.
+					articulo.almacenar(stock);
+					System.out.println("Los nuevos productos del articulo han sido añadidos correctamente.");
+					// Si no, mostramos un mensaje de que el producto no se ha podido añadir.
+				} else {
+					System.out.println("¡LO SIENTO! No se ha podido modificar el stock");
+				}
 			}
 
 			// Decrementar el stock...
-			case 6 -> {
+			case 'f' -> {
+				// Almacenamos en la variable nombreArticulo el nombre que nos devuelve la
+				// función pedirNombre.
+				nombreArticulo = pedirNombre();
+				// En el objeto articulo almacenamos el objeto articulo que nos devuelve la
+				// función buscarArticulo, ese objeto se corresponde al nombre pasado como
+				// parametro.
+				articulo = listaArtic.buscarArticulo(nombreArticulo);
 
+				// Comprobamos si ese articulo es distinto a null, si es así pedimos la cantidad
+				// a eliminar al stock del producto y se lo actualizamos a ese objeto.
+				if (articulo != null) {
+					// Almacenamos en la variable stock la cantidad de articulos a quitar
+					// de un articulo..
+					stock = pedirStock();
+
+					// Comprobamos si la función vender, nos elimina la cantidad de articulos
+					// disponibles, si es así mostramos un mensaje comunicandolo.
+					if (articulo.vender(stock)) {
+						System.out.println("Los articulos se han vendido correctamente.");
+
+						// Si no, indicamos que no hay productos suficientes.
+					} else {
+						System.out.println("No hay articulos suficientes para vender");
+					}
+
+					// Si no, mostramos un mensaje de que el producto no se ha podido añadir.
+				} else {
+					System.out.println("¡LO SIENTO! No se ha podido modificar el stock");
+				}
 			}
 
 			// Salimos...
-			case 7 -> {
+			case 'g' -> {
 				System.out.println("Saliendo del programa...");
 			}
 
@@ -133,7 +189,7 @@ public class PrincipalArticulo {
 			}
 
 			// Comprobamos si la opción es distinto de 7.
-		} while (opcion != 7);
+		} while (opcion != 'g');
 
 		// Cierre de Scanner
 		sc.close();
@@ -145,13 +201,13 @@ public class PrincipalArticulo {
 	 */
 	public static void mostrarMenu() {
 		System.out.println("\n--- ARTICULOS ---");
-		System.out.println("1. Listado");
-		System.out.println("2. Alta");
-		System.out.println("3. Baja");
-		System.out.println("4. Modificación");
-		System.out.println("5. Entrada de mercancía");
-		System.out.println("6. Salida de mercancía");
-		System.out.println("7. Salir");
+		System.out.println("a. Listado");
+		System.out.println("b. Alta");
+		System.out.println("c. Baja");
+		System.out.println("d. Modificación");
+		System.out.println("e. Entrada de mercancía");
+		System.out.println("f. Salida de mercancía");
+		System.out.println("g. Salir");
 		System.out.print("Elige una opción: ");
 	}
 
@@ -175,23 +231,17 @@ public class PrincipalArticulo {
 		// ese articulo.
 		int stock;
 
-		// Le pedimos al usuario que introduzca el nombre del nuevo articulo y lo
-		// leemos.
-		System.out.print("Introduce el nombre del articulo: ");
-		nombre = sc.nextLine();
+		// En la variable nombre almacenamos el valor que nos devuelve la función
+		// pedirNombre.
+		nombre = pedirNombre();
 
-		// Le pedimos al usuario que introduzca el precio del articulo neuvo y lo
-		// leemos.
-		System.out.print("Introduce el precio del articulo: ");
-		precio = sc.nextDouble();
-		// Limpiamos el buffer
-		sc.nextLine();
+		// En la variable precio almacenamos el valor que nos devuelve la función
+		// pedirPrecio.
+		precio = pedirPrecio();
 
-		// Le pedimos al usuario que introduzca el stock del nuevo articulo y lo leemos.
-		System.out.print("Introduce el stock del articulo: ");
-		stock = sc.nextInt();
-		// Limpiamos el buffer
-		sc.nextLine();
+		// En la variable stock almacenamos el valor que nos devuelve la función
+		// pedirStock.
+		stock = pedirStock();
 
 		// Creamos un objeto articulo con los datos solicitados al usuario.
 		art = new Articulo(nombre, precio, stock);
@@ -237,5 +287,27 @@ public class PrincipalArticulo {
 
 		// Devolvemos el precio que acabamos de leer.
 		return precio;
+	}
+
+	/**
+	 * Esta función se encarga de leer la cantidad de articulos que queremos vender
+	 * o añadir al stock de un producto.
+	 * 
+	 * @return La cantidad de un mismo articulo que queremos vender o incrementar.
+	 */
+	public static int pedirStock() {
+		// Creamos la variable stock como int para almacenar la cantidad de productos a
+		// añadir o eliminar.
+		int stock;
+
+		// Le pedimos al usuario que introduzca la cantidad de productos que desea
+		// incrementar o eliminar.
+		System.out.print("Introduce la cantidad de articulos: ");
+		stock = sc.nextInt();
+		// Limpiamos buffer.
+		sc.nextLine();
+
+		// Devolvemos el stock que acabamos de leer.
+		return stock;
 	}
 }

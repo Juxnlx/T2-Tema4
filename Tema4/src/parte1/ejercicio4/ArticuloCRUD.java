@@ -1,7 +1,6 @@
 package parte1.ejercicio4;
 
 import java.util.HashSet;
-import java.util.TreeSet;
 
 public class ArticuloCRUD {
 
@@ -17,7 +16,7 @@ public class ArticuloCRUD {
 		// alumno que exista en ese conjunto.
 		for (Articulo articulo : listaArticulos) {
 			System.out.println(articulo);
-			System.out.println();
+			System.out.println("--------------------");
 		}
 	}
 

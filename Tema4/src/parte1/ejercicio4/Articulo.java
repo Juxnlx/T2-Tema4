@@ -170,8 +170,11 @@ public class Articulo {
 	 * @param cantidad. La cantidad de articulos nuevos que hemos repuesto.
 	 */
 	public void almacenar(int cantidad) {
-		// Añadimos al stock del articulo la cantidad de articulos nuevos a reponer.
-		this.cuantosQuedan += cantidad;
+		// Comprobamos si la cantidad es mayor que 0.
+		if (cantidad > 0) {
+			// Añadimos al stock del articulo la cantidad de articulos nuevos a reponer.
+			this.cuantosQuedan += cantidad;
+		}
 	}
 
 	/**
@@ -186,7 +189,7 @@ public class Articulo {
 
 		datosArticulo = "Nombre: " + this.nombre + "\n";
 		datosArticulo += "Precio: " + getPVP() + "\n";
-		datosArticulo += "Stock: " + this.cuantosQuedan + "\n";
+		datosArticulo += "Stock: " + this.cuantosQuedan;
 
 		// Devolvemos la cadena datosArticulo, donde se almacena todos los datos de un
 		// articulo.
