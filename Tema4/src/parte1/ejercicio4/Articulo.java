@@ -1,5 +1,7 @@
 package parte1.ejercicio4;
 
+import java.util.Objects;
+
 /**
  * Creamos la clase Articulo para alamcenar los atributos que debe de contener
  * un articulo.
@@ -194,6 +196,38 @@ public class Articulo {
 		// Devolvemos la cadena datosArticulo, donde se almacena todos los datos de un
 		// articulo.
 		return datosArticulo;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre);
+	}
+
+	/**
+	 * Esta función se encarga de comprobar si el nombre actual y el nombre del
+	 * objeto como parametro son iguales.
+	 * 
+	 * @param obj El objeto de tipo Object pasado como parametro.
+	 * @return true si son iguales, false si no lo son.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		// Creamos la variable esIgual como boolean para almacenar si el nombre es igual
+		// al objeto o no.
+		boolean esIgual = false;
+
+		// Hacemos un cast del obj a un objeto de nuestra clase Articulo.
+		Articulo art = (Articulo) obj;
+
+		// Comprobamos si el nombre de ese objeto y el actual, son iguales. Si es así
+		// ponemos la función esIgual a true.
+		if (this.nombre.equals(art.nombre)) {
+			esIgual = true;
+		}
+
+		// Devolvemos la función esIgual.
+		return esIgual;
+
 	}
 
 }
