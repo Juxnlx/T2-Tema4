@@ -62,14 +62,11 @@ public class PrincipalPizza {
 				// Almacenamos en la variable codigo el codigo que nos devuelve la función
 				// pedirCodigo.
 				codigo = pedirCodigo();
-				// En el objeto pizza almacenamos el objeto que nos devuelve la función
-				// buscaPizza.
-				pizza = pedidos.buscarPizza(codigo);
 
 				// Comprobamos si el objeto devuelto es distinto de null, en ese caso
 				// modificamos mediante el set el estado de la pizza a 'servida'
-				if (pizza != null) {
-					pizza.setEstado("Servida");
+				if (pedidos.modificarEstado(codigo)) {
+					System.out.println("La pizza se ha marcado a servida.");
 					// Si no, imprimimos un mensaje informando que la pizza no existe.
 				} else {
 					System.out.println("La pizza no existe");

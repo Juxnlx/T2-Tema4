@@ -1,5 +1,7 @@
 package parte2.ejercicio4;
 
+import java.util.Objects;
+
 public class Pizza {
 
 	/**
@@ -170,6 +172,11 @@ public class Pizza {
 
 		// Devolvemos la cadena donde se encuentran todos los datos.
 		return datosPizza;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
 	}
 
 	/**

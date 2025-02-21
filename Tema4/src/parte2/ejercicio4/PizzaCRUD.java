@@ -56,4 +56,24 @@ public class PizzaCRUD {
 		// Devolvemos el objeto Pizza p.
 		return p;
 	}
+
+	public boolean modificarEstado(int codigo) {
+
+		// Creamos la variable modificado como boolean para almacenar si el estado se ha
+		// modificado o no.
+		boolean modificado = false;
+
+		// En un objeto pizza alamcenamos el objeto que nos devuelve la función
+		Pizza p = buscarPizza(codigo);
+
+		// Comprobamos si el objeto p es distinto de null, si es así devolvemos true y
+		// modificamos el estado a servida.F
+		if (p != null) {
+			p.setEstado("servida");
+			modificado = true;
+		}
+
+		// Devolvemos la variable modificado.
+		return modificado;
+	}
 }
