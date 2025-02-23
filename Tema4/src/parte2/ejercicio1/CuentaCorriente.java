@@ -1,5 +1,7 @@
 package parte2.ejercicio1;
 
+import java.util.Objects;
+
 public class CuentaCorriente {
 
 	/**
@@ -31,6 +33,18 @@ public class CuentaCorriente {
 	 * nacionalidad española.
 	 */
 	private Nacionalidad nacion = Nacionalidad.ESPAÑOLA;
+
+	/**
+	 * Creamos un constructor con un solo parametro de entrada el dni.
+	 * 
+	 * @param dni El dni del titular de la cuenta.
+	 */
+	public CuentaCorriente(String dni) {
+		// Comprobamos si el dni no esta a null ni vacio.
+		if (dni != null && !dni.isBlank()) {
+			this.dni = dni;
+		}
+	}
 
 	/**
 	 * Creamos un constructor con los siguientes parametros dni y saldo.
@@ -102,8 +116,8 @@ public class CuentaCorriente {
 		}
 
 		// Comprobamos si la nación es extranjera.
-		if (nacion.equalsIgnoreCase("extranjera")) {
-			this.nacion = Nacionalidad.EXTRANJERA;
+		if (nacion != null) {
+			tipoNacionalidad(nacion);
 		}
 	}
 
@@ -142,9 +156,7 @@ public class CuentaCorriente {
 	 * @param nacion La nacionalidad de una persona.
 	 */
 	public void setNacion(String nacion) {
-		if (nacion.equalsIgnoreCase("extranjera")) {
-			this.nacion = Nacionalidad.EXTRANJERA;
-		}
+		tipoNacionalidad(nacion);
 	}
 
 	/**
@@ -165,6 +177,14 @@ public class CuentaCorriente {
 		return saldo;
 	}
 
+	private void tipoNacionalidad(String nacionalidad) {
+		switch (nacionalidad) {
+		case "EXTRANJERA", "ESPAÑOLA" -> {
+			this.nacion = Nacionalidad.valueOf(nacionalidad);
+		}
+		}
+	}
+	
 	/**
 	 * Esta función nos permite sacar dinero modificando el saldo de la cuenta de la
 	 * persona.
@@ -234,6 +254,11 @@ public class CuentaCorriente {
 
 		// Devolvemos la cadena donde se encuentran todos los datos.
 		return datosCuenta;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni, nombre);
 	}
 
 	/**
