@@ -57,9 +57,8 @@ public class PrincipalDisco {
 				// A la variable codigo le asignamos el codigo que nos devuelve la función
 				// pedirCodigo.
 				codigo = pedirCodigo();
-				// Al objeto disco le asignamos el objeto que nos devuelve la función
-				// buscarDisco.
-				disco = DiscoCRUD.buscarDisco(codigo);
+				// Creamos un nuevo disco solo con el codigo.
+				disco = new Disco(codigo);
 
 				// Comprobamos si la función eliminarDisco nos devuelve un true o false. En el
 				// caso de ser true mostramos un mensaje de que el disco se ha eliminado
