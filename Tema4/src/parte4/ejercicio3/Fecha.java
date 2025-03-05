@@ -25,15 +25,15 @@ public class Fecha {
 	 * @param año El año de una fecha.
 	 */
 	public Fecha(int dia, int mes, int año) {
-		if (this.año > 0) {
-			this.año = año;
-		}
-		if (this.mes >= 1 && this.mes <= 12) {
-			this.mes = mes;
-		}
-
-		if (this.dia >= 1 && this.dia <= 31) {
-			this.dia = dia;
+		
+		this.dia = dia;
+		this.mes = mes;
+		this.año = año;
+		
+		if (!fechaCorrecta()) {
+			this.dia = 1;
+			this.mes = 1;
+			this.año = 1970;
 		}
 	}
 
@@ -103,7 +103,7 @@ public class Fecha {
 
 		// Comprobamos si el año es divisible entre 4, si es así, significa que el año
 		// es bisiesto por lo tanto devolvemos true.
-		if (this.año % 4 == 0) {
+		if ((this.año % 4 == 0 && this.año % 100 != 0) || (this.año % 400 == 0)) {
 			bisiesto = true;
 		}
 
@@ -121,53 +121,118 @@ public class Fecha {
 		// correcta o no.
 		boolean esCorrecta = false;
 
-		// Comprobamos si el año es mayor que 0.
-		if (this.año > 0) {
-			// Comprobamos si el mes de la fecha es enero, marzo, mayo, julio, agosto,
-			// octubre o diciembre.
-			if (this.mes == 1 || this.mes == 3 || this.mes == 5 || this.mes == 7 || this.mes == 8 || this.mes == 10
-					|| this.mes == 12) {
-				// Comprobamos si el dia esta entre 1 y 31, si es así la fecha es correcta.
-				if (this.dia >= 1 && this.dia <= 31) {
-					esCorrecta = true;
-				}
-				// Comprobamos si el mes es febrero.
-			} else if (this.mes == 2) {
-				// Comprobamos si el año es bisiesto y el dia esta entre 1 y 29, si es así es
-				// correcta la fecha.
-				if (esBisiesto() && (this.dia >= 1 && this.dia <= 29)) {
-					esCorrecta = true;
-					// Comprobamos si el año no es bisiesto y si el dia esta entre 1 y 28, si es así
-					// es correcta la fecha.
-				} else if (!esBisiesto() && (this.dia >= 1 && this.dia <= 28)) {
-					esCorrecta = true;
-				}
+		switch (this.mes) {
+		// Comprobamos si el mes de la fecha es enero, marzo, mayo, julio, agosto,
+		// octubre o diciembre.
+		case 1, 3, 5, 7, 8, 10, 12 -> {
+			// Comprobamos si el dia esta entre 1 y 31, si es así la fecha es correcta.
+			if (this.dia >= 1 && this.dia <= 31) {
+				esCorrecta = true;
+			}
+			// Comprobamos si el mes es febrero.
+		}
+		case 2 -> {
+			// Comprobamos si el año es bisiesto y el dia esta entre 1 y 29, si es así es
+			// correcta la fecha.
+			if (esBisiesto() && (this.dia >= 1 && this.dia <= 29)) {
+				esCorrecta = true;
+				// Comprobamos si el año no es bisiesto y si el dia esta entre 1 y 28, si es así
+				// es correcta la fecha.
+			} else if (!esBisiesto() && (this.dia >= 1 && this.dia <= 28)) {
+				esCorrecta = true;
+			}
 
-				// Comprobamos si el mes de la fecha es abril, junio, septiembre o diciembre.
+		}
+		// Comprobamos si el mes de la fecha es abril, junio, septiembre o diciembre.
+		case 4, 6, 9, 11 -> {
+			// Comprobamos si el dia esta entre 1 y 30, si es así la fecha es correcta.
+			if (this.dia >= 1 && this.dia <= 30) {
+				esCorrecta = true;
 			}
-			if (this.mes == 4 || this.mes == 6 || this.mes == 9 || this.mes == 11) {
-				// Comprobamos si el dia esta entre 1 y 30, si es así la fecha es correcta.
-				if (this.dia >= 1 && this.dia <= 30) {
-					esCorrecta = true;
-				}
-			}
+		}
 		}
 		// Devolvemos la varible esCorrecta.
 		return esCorrecta;
 	}
-	
+
+	/**
+	 * Esta función incrementa de forma valida un dia mas en la fecha.
+	 */
 	public void diaSiguiente() {
+		// Incrementamos el dia en mas 1.
 		this.dia++;
-		
-		if (this.dia == )
+
+		// Creamos la variable diaMes como int para alamcenar los dias de cada mes.
+		int diaMes = 0;
+
+		// Comprobamos el mes de la fecha.
+		switch (this.mes) {
+
+		// En el caso de estos meses establecemos el diaMes a 31.
+		case 1, 3, 5, 7, 8, 10, 12 -> {
+			diaMes = 31;
+		}
+		// En el caso de febrero debemos de comprobar si el año es bisiesto y en ese
+		// caso diaMes es 29 0 28.
+		case 2 -> {
+			if (esBisiesto()) {
+				diaMes = 29;
+			} else {
+				diaMes = 28;
+			}
+		}
+
+		// En el caso del resto de meses establecemos diaMes a 30.
+		case 4, 6, 9, 11 -> {
+			diaMes = 30;
+		}
+		}
+
+		// Comprobamos si el dia de la fecha es mayor al maximo del mes, en ese caso dia
+		// lo ponemos a 1 e incrementamos el mes.
+		if (this.dia > diaMes) {
+			this.dia = 1;
+			mes++;
+		}
+
+		// Comprobamos si el mes es mayor que 12, en ese caso mes lo ponemos a 1 (Enero)
+		// y incrementamos en +1 el año.
+		if (this.mes > 12) {
+			this.mes = 1;
+			this.año++;
+		}
+
 	}
 
 	/**
-	 * Esta función almacena en una variable 
+	 * Esta función se encarga de imprimir la fecha en un formato especifico
+	 * dd/mm/aaaa.
+	 * 
+	 * @return Una cadena donde se almacena la decha.
 	 */
 	@Override
 	public String toString() {
-		
+		// Creamos la variable sol como String para almacenar el formato en el que vamos
+		// a imprimir la fecha.
+		String sol = "";
+
+		if (this.dia >= 1 && this.dia <= 9) {
+			sol += "0" + this.dia + "-";
+		} else {
+			sol += this.dia + "-";
+		}
+
+		if (this.mes >= 1 && this.mes <= 9) {
+			sol += "0" + this.mes + "-";
+		} else {
+			sol += this.mes + "-";
+		}
+
+		sol += this.año;
+
+		// Devolvemos la variable sol donde se encuentra el formato de impresión de la
+		// fecha.
+		return sol;
 	}
-	
+
 }
