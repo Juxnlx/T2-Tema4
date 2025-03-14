@@ -161,7 +161,10 @@ public class Disco {
 	}
 
 	/**
+	 * Creamos esta función para representar de manera unica a un objeto solo
+	 * comparando el codigo.
 	 * 
+	 * @return Un valor hash entero basado en el código del disco.
 	 */
 	@Override
 	public int hashCode() {
