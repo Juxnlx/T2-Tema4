@@ -28,7 +28,17 @@ public class PrincipalFecha {
 		System.out.print("Introduce un año --> ");
 		año = sc.nextInt();
 		
-		Fecha f = new Fecha(dia, mes, año);
+		Fecha f = null;
+		
+		try {
+			f = new Fecha(dia, mes, año);
+		} catch (DiaException e) {
+			System.out.println(e.getMessage());
+		}catch (MesException e) {
+			System.out.println(e.getMessage());
+		}catch (YearException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		if (f.fechaCorrecta()) {
 			f.diaSiguiente();

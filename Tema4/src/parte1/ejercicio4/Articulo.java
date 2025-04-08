@@ -36,21 +36,30 @@ public class Articulo {
 	 * @param nombre        El nombre del articulo.
 	 * @param precio        El precio del articulo.
 	 * @param cuantosQuedan La cantidad de productos que quedan.
+	 * @throws NombreException 
+	 * @throws PrecioException 
+	 * @throws StockException 
 	 */
-	public Articulo(String nombre, double precio, int cuantosQuedan) {
+	public Articulo(String nombre, double precio, int cuantosQuedan) throws NombreException, PrecioException, StockException {
 		// Comprobamos si el nombre no esta a null ni vacio.
 		if (nombre != null && !nombre.isEmpty()) {
 			this.nombre = nombre;
+		} else {
+			throw new NombreException();
 		}
 
 		// Comprobamos si el precio es mayor que 0.
 		if (precio > 0) {
 			this.precio = precio;
+		}else {
+			throw new PrecioException();
 		}
 
 		// Comprobamos si el cuantosQuedan es mayor o igual a 0.
 		if (cuantosQuedan >= 0) {
 			this.cuantosQuedan = cuantosQuedan;
+		}else {
+			throw new StockException();
 		}
 	}
 

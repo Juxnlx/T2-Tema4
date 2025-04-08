@@ -24,17 +24,25 @@ public class Fecha {
 	 * @param mes El mes de una fecha.
 	 * @param año El año de una fecha.
 	 */
-	public Fecha(int dia, int mes, int año) {
-		
+	public Fecha(int dia, int mes, int año) throws DiaException, MesException, YearException {
+		if (año <= 0) {
+			throw new YearException(); // Lanzamos la excepción si el año es inválido
+		}
+		if (mes < 1 || mes > 12) {
+			throw new MesException(); // Lanzamos la excepción si el mes no es válido
+		}
+		if (dia < 1 || dia > 31) {
+			throw new DiaException(); // Lanzamos la excepción si el día no es válido
+		}
+
+		// Comprobamos si la fecha es correcta
+		if (!fechaCorrecta()) {
+			throw new DiaException(); // Si la fecha no es correcta, lanzamos DiaException
+		}
+
 		this.dia = dia;
 		this.mes = mes;
 		this.año = año;
-		
-		if (!fechaCorrecta()) {
-			this.dia = 1;
-			this.mes = 1;
-			this.año = 1970;
-		}
 	}
 
 	/**

@@ -218,7 +218,7 @@ public class PrincipalArticulo {
 	 */
 	public static Articulo altaArticulo() {
 		// Declaramos un nuevo objeto Articulo.
-		Articulo art;
+		Articulo art = null;
 
 		// Creamos la variable nombre como int para almacenar el nombre del articulo.
 		String nombre = "";
@@ -243,7 +243,15 @@ public class PrincipalArticulo {
 		stock = pedirStock();
 
 		// Creamos un objeto articulo con los datos solicitados al usuario.
-		art = new Articulo(nombre, precio, stock);
+		try {
+			art = new Articulo(nombre, precio, stock);
+		} catch (NombreException e) {
+			System.out.println(e.getMessage());
+		}catch (PrecioException e) {
+			System.out.println(e.getMessage());
+		}catch (StockException e) {
+			System.out.println(e.getMessage());
+		}
 
 		// Devolvemos el nuevo articulo.
 		return art;
