@@ -24,18 +24,27 @@ public class Hora {
 	 * @param hora    Las horas de una hora.
 	 * @param minuto  Los minutos de una hora.
 	 * @param segundo Los segundos de una hora.
+	 * @throws NegativeHourException, NegativeMinuteException,
+	 *                                NegativeSecondException
 	 */
-	public Hora(int hora, int minuto, int segundo) {
+	public Hora(int hora, int minuto, int segundo)
+			throws NegativeHourException, NegativeMinuteException, NegativeSecondException {
 		if (hora >= 0 && hora < 24) {
 			this.hora = hora;
+		} else {
+			throw new NegativeHourException();
 		}
 
 		if (minuto >= 0 && minuto < 60) {
 			this.minuto = minuto;
+		} else {
+			throw new NegativeMinuteException();
 		}
 
 		if (segundo >= 0 && segundo < 60) {
 			this.segundo = segundo;
+		} else {
+			throw new NegativeSecondException();
 		}
 	}
 
@@ -52,10 +61,13 @@ public class Hora {
 	 * Esta función nos permite modificar las horas de una hora.
 	 * 
 	 * @param hora Las hora de una hora.
+	 * @throws NegativeHourException
 	 */
-	public void setHora(int hora) {
+	public void setHora(int hora) throws NegativeHourException {
 		if (hora >= 0 && hora < 24) {
 			this.hora = hora;
+		} else {
+			throw new NegativeHourException();
 		}
 	}
 
@@ -73,9 +85,11 @@ public class Hora {
 	 * 
 	 * @param minuto Los minutos de una hora.
 	 */
-	public void setMinuto(int minuto) {
+	public void setMinuto(int minuto) throws NegativeMinuteException {
 		if (minuto >= 0 && minuto < 60) {
 			this.minuto = minuto;
+		} else {
+			throw new NegativeMinuteException();
 		}
 	}
 
@@ -93,9 +107,11 @@ public class Hora {
 	 * 
 	 * @param segundo Los segundos de una hora.
 	 */
-	public void setSegundo(int segundo) {
+	public void setSegundo(int segundo) throws NegativeSecondException {
 		if (segundo >= 0 && segundo < 60) {
 			this.segundo = segundo;
+		} else {
+			throw new NegativeSecondException();
 		}
 	}
 
